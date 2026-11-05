@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jCaret · Demo</title>
+    <link rel="icon" href="../docs/logo.svg" type="image/svg+xml">
+    <!-- Optional: the fonts offered in the editor's font list (Latin, Arabic and handwriting) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa&family=Caveat&family=Dancing+Script&family=El+Messiri&family=Indie+Flower&family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic&family=Pacifico&family=Reem+Kufi&family=Scheherazade+New&family=Shadows+Into+Light&family=Cairo:wght@400;600;700&family=Lemonada&family=Tajawal&family=Marhey&family=Katibeh&family=Handjet&display=swap" rel="stylesheet">
+    <!-- Required: Tailwind CSS v2 utilities (the toolbar and panels use them), then jCaret -->
+    <link href="../vendor/tailwind.min.css" rel="stylesheet">
+    <link href="../dist/jCaret.css" rel="stylesheet">
+    <script src="../dist/jCaret.js"></script>
+    <style>
+        body { margin: 0; background: #f1f5f9; font-family: Inter, Cairo, system-ui, sans-serif; color: #0f172a; }
+        header { max-width: 900px; margin: 0 auto; padding: 28px 16px 12px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+        header img { width: 40px; height: 40px; }
+        header h1 { font-size: 1.5rem; margin: 0; flex: 1; }
+        header nav { display: flex; gap: 8px; }
+        header a { padding: 6px 14px; border-radius: 999px; border: 1px solid #cbd5e1; color: #0f172a; text-decoration: none; font-size: .9rem; background: #fff; }
+        header a[aria-current] { background: #0d9488; border-color: #0d9488; color: #fff; }
+        main { padding: 8px 16px 48px; }
+        p.hint { max-width: 900px; margin: 0 auto 16px; color: #475569; font-size: .95rem; }
+    </style>
+</head>
+<body>
+<header>
+    <img src="../docs/logo.svg" alt="">
+    <h1>jCaret</h1>
+    <nav><a href="?lang=en" id="en">English</a><a href="?lang=ar" id="ar">العربية</a></nav>
+</header>
+<p class="hint" id="hint">Real A4 pages: write, add tables and images, pick a page background, then print or save as PDF.</p>
+<main><div id="editor-container"></div></main>
+<script>
+    // ?lang=ar for the Arabic (right-to-left) editor
+    const lang = new URLSearchParams(location.search).get('lang') === 'ar' ? 'ar' : 'en';
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.getElementById(lang).setAttribute('aria-current', 'page');
+    if (lang === 'ar') document.getElementById('hint').textContent = 'صفحات A4 حقيقية: اكتب، وأضف الجداول والصور، واختر خلفية للصفحة، ثم اطبع أو احفظ كملف PDF.';
+
+    const editor = new jCaret('#editor-container', {
+        language: lang,           // 'en' or 'ar'
+        width: '880px',
+        height: '420px',
+        heightMode: 'min',        // 'min' grows with the text, 'fixed' scrolls
+        useLocalStorage: true,    // keep the document (and its settings) after a reload
+        borderRadius: '12px',
+        pageBackground: 'none'    // 'none' | 'dotted' | 'squares' | 'graph' | 'music'
+    });
+</script>
+</body>
+</html>

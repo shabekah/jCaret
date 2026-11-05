@@ -1,0 +1,7 @@
+.DS_Store
+Thumbs.db
+node_modules/
+*.log
+# licensed font, not redistributed (see README)
+dist/shekari.ttf
+shekari.ttf
