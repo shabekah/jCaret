@@ -102,4 +102,4 @@ Current versions of Chrome, Edge, Firefox and Safari, on desktop and mobile.
 
 ---
 
-<p align="center"><b>jCaret</b> · Made by <a href="https://shabekah.net">shabekah.net</a>. Try the live demo at <a href="https://shabekah.net/projects/jcaret/">shabekah.net/projects/jcaret</a>.</p>
+<p align="center"><b>jCaret</b> · Made by <a href="https://shabekah.net" target="_blank">shabekah.net</a>. Try the live demo at <a href="https://shabekah.net/projects/jcaret/">shabekah.net/projects/jcaret</a>.</p>
